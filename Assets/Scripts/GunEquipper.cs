@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GunEquipper : MonoBehaviour
 {
+    [SerializeField]
+    GameUI gameUI;
     public static string activeWeaponType;
     public GameObject pistol;
     public GameObject assaultRifle;
@@ -37,18 +39,21 @@ public class GunEquipper : MonoBehaviour
         {
             loadWeapon(pistol);
             activeWeaponType = Constants.Pistol;
-            
+            gameUI.UpdateReticle();
+
         }
         // Below else if statement added so assaultRifle shows up when you press 2
         else if (Input.GetKeyDown("2"))
         {
             loadWeapon(assaultRifle);
             activeWeaponType = Constants.AssaultRifle;
+            gameUI.UpdateReticle();
         }
         else if (Input.GetKeyDown("3"))
         {
             loadWeapon(shotgun);
             activeWeaponType = Constants.Shotgun;
+            gameUI.UpdateReticle();
         }
     }
 }
