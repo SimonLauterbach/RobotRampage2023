@@ -7,6 +7,15 @@ public class Missile : MonoBehaviour
     public float speed = 30f;
     public int damage = 10;
 
+    void OnCollisionEnter(Collision collider)
+    {
+        if (collider.gameObject.GetComponent<Player>() != null
+        && collider.gameObject.tag == "Player")
+        {
+            collider.gameObject.GetComponent<Player>().TakeDamage(damage);
+        }
+        Destroy(gameObject);
+    }
     //1
     void Start()
     {
